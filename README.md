@@ -27,4 +27,4 @@ The network outputs a vector of 128 numbers which represent the most important f
 - **Step 5:** Embeddings for images are obtained after training
 <br>
 <br>
-[Face Detection - Google Colab File]()
+[Face Detection - Google Colab File](https://colab.research.google.com/drive/1xGTUCZYVUExRcsMH_h-o8XjAPBpamNRd?usp=sharing)
