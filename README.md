@@ -25,8 +25,6 @@ The network outputs a vector of 128 numbers which represent the most important f
 - **Step 4:** Feature map across the face
   - After training the network, it understands to group similar looking facestogether into one category.
 - **Step 5:** Embeddings for images are obtained after training
-
-
-
-
+<br>
+<br>
 [Face Detection - Google Colab File]()
