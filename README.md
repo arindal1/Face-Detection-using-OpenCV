@@ -51,10 +51,12 @@ This script detects faces in an input image and draws rectangles around the dete
 Remember to replace the input image name (`test3.jpg`) with the actual image you want to perform face detection on. Also, make sure you have the `haarcascade_frontalface.xml` classifier file available in the same directory. This classifier is based on Haar cascades and is a pre-trained model for face detection provided by OpenCV.
 
 Here test3.jpg is the input data.
-![test3](Old Version/test3.jpg)
+
+![test3](Old-Version/test3.jpg)
 
 The Haarcascade processed output:
-![output](Old Version/face_detected (1).png)
+
+![output](Old-Version/face_detected-(1).png)
 
 ## About Haarcascade Frontalface
 
