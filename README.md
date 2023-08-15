@@ -56,7 +56,7 @@ Here test3.jpg is the input data.
 
 The Haarcascade processed output:
 
-![output](Old-Version/face_detected-(1).png)
+![output](Old Version/face_detected (1).png)
 
 ## About Haarcascade Frontalface
 
