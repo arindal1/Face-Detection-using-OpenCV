@@ -28,6 +28,8 @@ The network outputs a vector of 128 numbers which represent the most important f
 <br>
 <br>
 
+---
+---
 # Old Version:
 
 This script detects faces in an input image and draws rectangles around the detected faces. Here's a breakdown of the code:
@@ -47,6 +49,12 @@ This script detects faces in an input image and draws rectangles around the dete
 7. Print Confirmation: A message is printed to indicate that the photo with detected faces has been successfully exported.
 
 Remember to replace the input image name (`test3.jpg`) with the actual image you want to perform face detection on. Also, make sure you have the `haarcascade_frontalface.xml` classifier file available in the same directory. This classifier is based on Haar cascades and is a pre-trained model for face detection provided by OpenCV.
+
+Here test3.jpg is the input data.
+![test3](Old Version/test3.jpg)
+
+The Haarcascade processed output:
+![output](Old Version/
 
 ## About Haarcascade Frontalface
 
