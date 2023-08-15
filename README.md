@@ -52,11 +52,11 @@ Remember to replace the input image name (`test3.jpg`) with the actual image you
 
 Here test3.jpg is the input data.
 
-![test3](Old-Version/test3.jpg)
+![test3](https://github.com/arindal1/Face-Detection-using-OpenCV/blob/main/Old%20Version/test3.jpg)
 
 The Haarcascade processed output:
 
-![output](Old Version/face_detected (1).png)
+![output](https://github.com/arindal1/Face-Detection-using-OpenCV/blob/main/Old%20Version/face_detected%20(1).png)
 
 ## About Haarcascade Frontalface
 
