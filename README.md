@@ -25,8 +25,9 @@ The network outputs a vector of 128 numbers which represent the most important f
 - **Step 4:** Feature map across the face
   - After training the network, it understands to group similar looking facestogether into one category.
 - **Step 5:** Embeddings for images are obtained after training
-<br>
-<br>
+
+### [Modern Face Recognition with Deep Learning](https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78)
+This an article by [Adam Geitgey](https://medium.com/@ageitgey?source=post_page-----c3cffc121d78--------------------------------) about how Modern Face Recognition works, in both theoritical and practical ways. It's a 13-15 minutes read. You can read this article before starting this project yourself, it's very informative and helpful!
 
 ---
 ---
