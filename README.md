@@ -29,8 +29,190 @@ The network outputs a vector of 128 numbers which represent the most important f
 ### [Modern Face Recognition with Deep Learning](https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78)
 This an article by [Adam Geitgey](https://medium.com/@ageitgey?source=post_page-----c3cffc121d78--------------------------------) about how Modern Face Recognition works, in both theoritical and practical ways. It's a 13-15 minutes read. You can read this article before starting this project yourself, it's very informative and helpful!
 
+
+# Real-time Face Recognition using OpenCV and simple_facerec
+
+This project demonstrates real-time face recognition using the OpenCV library along with the `simple_facerec` library. The program captures video frames from your webcam and detects known faces in the frames by comparing them with previously encoded faces.
+
+## Getting Started
+
+Follow the steps below to set up and run the project on your local machine.
+
+### Prerequisites
+
+- Python 3.x
+- OpenCV (install with `pip install opencv-python`)
+- `simple_facerec` (keep the file in the base directory)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/arindal1/Face-Detection-using-OpenCV.git
+   cd face-recognition-project
+   ```
+
+2. Install the required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Usage
+
+1. Place face images for encoding in the `InData/` directory.
+2. Run the script:
+   ```bash
+   python main.py
+   ```
+3. The script will open a window showing the webcam feed with recognized faces highlighted.
+
+Press the "Esc" key to exit the application.
+
+## How it Works
+
+1. The program initializes the `simple_facerec` library and loads face encodings from the `InData/` directory.
+2. It captures video frames from the webcam using OpenCV.
+3. Detected faces in each frame are compared with the loaded encodings to recognize known faces.
+4. Recognized faces are highlighted with bounding boxes and labels on the webcam feed.
+
+## Breakdown of the Scripts
+
+### Base File
+The `base.py` is the base file. A Python script using the OpenCV and face_recognition libraries to perform face recognition on two images. The script first loads and encodes faces from the provided images, and then compares the facial encodings to determine if the faces in the images match. Finally, it displays the images using OpenCV's `imshow` function.
+
+Here's a breakdown of the script:
+
+1. Import the necessary libraries:
+   ```python
+   import cv2
+   import face_recognition
+   ```
+
+2. Load the first image (`elon1.jpg`) and convert it to RGB color format:
+   ```python
+   img = cv2.imread("InData/elon1.jpg")
+   rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+   ```
+
+3. Encode the face(s) present in the first image:
+   ```python
+   img_encoding = face_recognition.face_encodings(rgb_img)[0]
+   ```
+
+4. Load the second image (`musk1.jpg`) and convert it to RGB color format:
+   ```python
+   img2 = cv2.imread("TestData/musk1.jpg")
+   rgb_img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2RGB)
+   ```
+
+5. Encode the face(s) present in the second image:
+   ```python
+   img_encoding2 = face_recognition.face_encodings(rgb_img2)[0]
+   ```
+
+6. Compare the two face encodings to determine if they match:
+   ```python
+   result = face_recognition.compare_faces([img_encoding], img_encoding2)
+   ```
+
+7. Print the result of the face comparison:
+   ```python
+   print("Result: ", result)
+   ```
+
+8. Display the two images using OpenCV's `imshow` function:
+   ```python
+   cv2.imshow("Img", img)
+   cv2.imshow("Img 2", img2)
+   cv2.waitKey(0)
+   ```
+
+If the result is `[True]`, it means that the faces in the two images match; if it's `[False]`, the faces don't match.
+
+Make sure that you have the required image files (`elon1.jpg` and `musk1.jpg`) in the specified paths ("InData/" and "TestData/") before running the script. Also, ensure you have the OpenCV and face_recognition libraries installed in your environment.
+
+### Real Time Detection
+The `facedetector.py` is the file for real life face detection, a Python script that uses the `simple_facerec` library along with OpenCV to perform real-time face recognition using your webcam feed. The script first loads face encodings from a folder, then utilizes the webcam to detect and recognize faces in the live video stream.
+
+Here's a breakdown of the script:
+
+1. Import the necessary libraries:
+   ```python
+   import cv2
+   from simple_facerec import SimpleFacerec
+   ```
+
+2. Initialize the `SimpleFacerec` object and load encoded images from the specified folder ("InData/"):
+   ```python
+   sfr = SimpleFacerec()
+   sfr.load_encoding_images("InData/")
+   ```
+
+3. Load the webcam capture device:
+   ```python
+   cap = cv2.VideoCapture(2)
+   ```
+
+4. Start an infinite loop to continuously process frames from the webcam:
+   ```python
+   while True:
+       ret, frame = cap.read()
+   ```
+
+5. Detect known faces in the current frame using the loaded encodings:
+   ```python
+   face_locations, face_names = sfr.detect_known_faces(frame)
+   ```
+
+6. Iterate over the detected face locations and corresponding names:
+   ```python
+   for face_loc, name in zip(face_locations, face_names):
+       y1, x2, y2, x1 = face_loc[0], face_loc[1], face_loc[2], face_loc[3]
+
+       # Draw the name and bounding box around the detected face
+       cv2.putText(frame, name, (x1, y1 - 10), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 200), 2)
+       cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 200), 4)
+   ```
+
+7. Display the processed frame in a window named "Frame":
+   ```python
+   cv2.imshow("Frame", frame)
+   ```
+
+8. Check for a key press and break the loop if the "Esc" key (key code 27) is pressed:
+   ```python
+   key = cv2.waitKey(1)
+   if key == 27:
+       break
+   ```
+
+9. Release the webcam capture device and close all OpenCV windows when the loop is exited:
+   ```python
+   cap.release()
+   cv2.destroyAllWindows()
+   ```
+
+This script essentially captures video frames from your webcam, processes them to detect and recognize faces using the loaded encodings, and displays the frames with recognized names and bounding boxes. Pressing the "Esc" key will stop the script and close the OpenCV windows. Make sure you have the `simple_facerec` library installed in your environment, and ensure your webcam is accessible and properly configured.
+
+## Contributing
+
+Contributions to this project are welcome! If you have any suggestions, improvements, or bug fixes, feel free to open an issue or submit a pull request.
+
+## Acknowledgements
+
+- This project uses the [simple_facerec](https://github.com/davisking/dlib) library for face recognition.
+- Special thanks to the authors and contributors of the OpenCV and `simple_facerec` libraries for their valuable work.
+
+## Contact
+
+If you have any questions or want to connect, feel free to reach out:
+
+- GitHub: [arindal1](https://github.com/arindal1)
+- LinkedIn: [Arindal](https://www.linkedin.com/in/arindalchar/)
+
 ---
 ---
+
 # Old Version:
 
 This script detects faces in an input image and draws rectangles around the detected faces. Here's a breakdown of the code:
