@@ -194,6 +194,16 @@ Here's a breakdown of the script:
 
 This script essentially captures video frames from your webcam, processes them to detect and recognize faces using the loaded encodings, and displays the frames with recognized names and bounding boxes. Pressing the "Esc" key will stop the script and close the OpenCV windows. Make sure you have the `simple_facerec` library installed in your environment, and ensure your webcam is accessible and properly configured.
 
+## Accuracy
+
+Calculating the accuracy of a face recognition model like the one you've implemented can be a bit more involved than a traditional machine learning classification model because it doesn't follow the typical training/testing split. However, you can still evaluate the performance of your face recognition system by considering some aspects:
+
+1. **Known Face Identification Accuracy**: Since your model is detecting known faces from a set of loaded encodings, you could evaluate how well it correctly identifies the pre-registered faces in real-time. This could be done by comparing the recognized names with the actual names of the individuals in the frame and calculating the percentage of correct identifications.
+
+2. **False Positives and False Negatives**: You can also keep track of false positives (recognizing a face that shouldn't be recognized) and false negatives (not recognizing a face that should be recognized). This will provide insight into the model's performance with respect to both over-recognition and under-recognition.
+
+Remember that these calculations are rough estimates and may not provide a complete picture of the model's performance, especially considering factors like varying lighting conditions, angles, and other real-world challenges. Also, the effectiveness of the accuracy calculation largely depends on the quality of the encodings, the diversity of the training data, and the robustness of the recognition process.
+
 ## Contributing
 
 Contributions to this project are welcome! If you have any suggestions, improvements, or bug fixes, feel free to open an issue or submit a pull request.
