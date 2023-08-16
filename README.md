@@ -132,7 +132,7 @@ If the result is `[True]`, it means that the faces in the two images match; if i
 Make sure that you have the required image files (`elon1.jpg` and `musk1.jpg`) in the specified paths ("InData/" and "TestData/") before running the script. Also, ensure you have the OpenCV and face_recognition libraries installed in your environment.
 
 ### Real Time Detection
-The `facedetector.py` is the file for real life face detection, a Python script that uses the `simple_facerec` library along with OpenCV to perform real-time face recognition using your webcam feed. The script first loads face encodings from a folder, then utilizes the webcam to detect and recognize faces in the live video stream.
+The `facedetector.py` is the file for real time face detection, a Python script that uses the `simple_facerec` library along with OpenCV to perform real-time face recognition using your webcam feed. The script first loads face encodings from a folder, then utilizes the webcam to detect and recognize faces in the live video stream.
 
 Here's a breakdown of the script:
 
